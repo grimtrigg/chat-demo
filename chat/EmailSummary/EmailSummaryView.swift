@@ -2,13 +2,7 @@ import SwiftUI
 import GoogleSignIn
 
 struct EmailSummaryView: View {
-    @StateObject private var viewModel: EmailSummaryViewModel
-    
-    init(
-        viewModel: EmailSummaryViewModel
-    ) {
-        self._viewModel = .init(wrappedValue: viewModel)
-    }
+    @ObservedObject var viewModel: EmailSummaryViewModel
     
     var body: some View {
         content

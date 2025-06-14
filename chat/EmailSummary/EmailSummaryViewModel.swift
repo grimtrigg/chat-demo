@@ -278,12 +278,15 @@ extension EmailSummaryViewModel {
               \n\(body)\n\nSummarize these in one paragraph.
               """
                         var final = ""
-                        for try await chunk in session.stream(prompt: prompt) {
+                        print(prompt)
+                        let session = LanguageModelSession()
+                        for try await chunk in session.streamResponse(to: prompt) {
                             final = chunk
                             actionContinuation.yield(.workflowOutput(.summaryResult(.success((emails, chunk)))))
                         }
                         actionContinuation.yield(.workflowOutput(.summaryResult(.success((emails, final)))))
                     } catch {
+                        print(error)
                         actionContinuation.yield(.workflowOutput(.summaryResult(.failure(error))))
                     }
                 }

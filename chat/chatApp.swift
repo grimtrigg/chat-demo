@@ -1,23 +1,26 @@
-import UIKit
 import SwiftUI
+import UIKit
 
 @main
 struct chatApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    var body: some Scene {
-        WindowGroup {
-            TabView {
-                ChatView(
-                    viewModel: ChatViewModelFactory.make()
-                )
-                .tabItem { Label("Chat", systemImage: "message") }
-                
-                EmailSummaryView(
-                    viewModel: EmailSummaryViewModelFactory.make()
-                )
-                .tabItem { Label("Email", systemImage: "envelope") }
-            }
-        }
+  @StateObject private var chatViewModel = ChatViewModelFactory.make()
+  @StateObject private var emailSummaryViewModel = EmailSummaryViewModelFactory.make()
+
+  var body: some Scene {
+    WindowGroup {
+      TabView {
+        ChatView(
+          viewModel: chatViewModel
+        )
+        .tabItem { Label("Chat", systemImage: "message") }
+
+        EmailSummaryView(
+          viewModel: emailSummaryViewModel
+        )
+        .tabItem { Label("Email", systemImage: "envelope") }
+      }
     }
+  }
 }

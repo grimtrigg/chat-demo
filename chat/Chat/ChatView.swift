@@ -5,7 +5,7 @@ struct ChatView: View {
         static let scrollDeadZone: CGFloat = 18
     }
     
-    @StateObject private var viewModel: ChatViewModel
+    @ObservedObject var viewModel: ChatViewModel
     @Namespace private var glassNameSpace
     
     @State private var barMode: BarMode = .expanded
@@ -14,12 +14,6 @@ struct ChatView: View {
     private enum BarMode {
         case expanded
         case compact
-    }
-    
-    init(
-        viewModel: ChatViewModel
-    ) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
