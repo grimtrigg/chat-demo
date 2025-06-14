@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CC81A98B2DFBC59000EBCDB8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CC81A98A2DFBC59000EBCDB8 /* GoogleSignIn */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CC145AB42DF927FF009DE8CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +33,22 @@
 		CC145ABD2DF927FF009DE8CF /* chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CC81A9952DFBD07900EBCDB8 /* Exceptions for "chat" folder in "chat" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CC145AA52DF927FE009DE8CF /* chat */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CC145AA82DF927FE009DE8CF /* chat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CC81A9952DFBD07900EBCDB8 /* Exceptions for "chat" folder in "chat" target */,
+			);
 			path = chat;
 			sourceTree = "<group>";
 		};
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC81A98B2DFBC59000EBCDB8 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +130,7 @@
 			);
 			name = chat;
 			packageProductDependencies = (
+				CC81A98A2DFBC59000EBCDB8 /* GoogleSignIn */,
 			);
 			productName = chat;
 			productReference = CC145AA62DF927FE009DE8CF /* chat.app */;
@@ -196,6 +215,7 @@
 			mainGroup = CC145A9D2DF927FE009DE8CF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				CC81A9892DFBC59000EBCDB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CC145AA72DF927FE009DE8CF /* Products */;
@@ -402,6 +422,7 @@
 				DEVELOPMENT_TEAM = 6MSM3VBQYJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -433,6 +454,7 @@
 				DEVELOPMENT_TEAM = 6MSM3VBQYJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC81A9892DFBC59000EBCDB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC81A98A2DFBC59000EBCDB8 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC81A9892DFBC59000EBCDB8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CC145A9E2DF927FE009DE8CF /* Project object */;
 }

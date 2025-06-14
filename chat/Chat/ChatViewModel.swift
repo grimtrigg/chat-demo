@@ -93,7 +93,6 @@ extension ChatViewModel {
         case workflowInput(WorkflowInputEffect)
         case haptic(HapticEffect)
         case analytics(AnalyticsEffect)
-        
     }
     
     enum WorkflowInputEffect {
@@ -136,12 +135,12 @@ final class ChatViewModel: ObservableObject {
     
     @Published var state = State()
     
-    private let session: ChatLanguageModelSessionProtocol
+    private let session: LanguageModelSessionProtocol
     private let actionStream: AsyncStream<Action>
     private let actionContinuation: AsyncStream<Action>.Continuation
     
     init(
-        session: ChatLanguageModelSessionProtocol
+        session: LanguageModelSessionProtocol
     ) {
         self.session = session
         
@@ -171,12 +170,10 @@ final class ChatViewModel: ObservableObject {
     ) {
         Task { [weak self] in
             guard let self else { return }
-            
             for await action in actionStream {
                 let old = state
                 let (new, effects) = reduce(action: action, state: old)
                 state = new
-                
                 effects.forEach { [weak self] in
                     guard let self else { return }
                     handleEffect(effect: $0, oldState: old, newState: new)

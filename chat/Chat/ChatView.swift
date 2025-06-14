@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct ChatView: View {
     private enum Constants {
         static let scrollDeadZone: CGFloat = 18
     }
@@ -189,6 +189,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(viewModel: ChatViewModelFactory.make())
+    ChatView(viewModel: ChatViewModelFactory.make())
 }
 

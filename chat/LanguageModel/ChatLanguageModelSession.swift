@@ -1,13 +1,7 @@
 import Foundation
 import FoundationModels
 
-protocol ChatLanguageModelSessionProtocol {
-    func stream(
-        prompt: String
-    ) -> LanguageModelSession.ResponseStream<String>
-}
-
-final class ChatLanguageModelSession: ChatLanguageModelSessionProtocol {
+final class ChatLanguageModelSession: LanguageModelSessionProtocol {
     private let session = LanguageModelSession(
         tools: .chatLlmTools,
         instructions: .chatLlmInstructions
