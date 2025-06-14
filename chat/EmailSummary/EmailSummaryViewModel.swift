@@ -271,16 +271,17 @@ extension EmailSummaryViewModel {
             case .summarize(let emails):
                 Task {
                     do {
-                        let body = emails.map { "- \($0.subject) (\($0.from)): \($0.snippet)" }.joined(
-                            separator: "\n")
+                        // shorten for apple llm context window, to prevent error
+                        let prefixedForContextWindow = emails.prefix(20)
+                        let body = prefixedForContextWindow
+                            .map { "- \($0.subject) (\($0.from)): \($0.snippet)" }
+                            .joined(separator: "\n")
                         let prompt = """
-              These are the user's emails from today:
-              \n\(body)\n\nSummarize these in one paragraph.
-              """
+                            These are the user's emails from today:
+                            \n\(body)\n\nSummarize these in one paragraph.
+                        """
                         var final = ""
-                        print(prompt)
-                        let session = LanguageModelSession()
-                        for try await chunk in session.streamResponse(to: prompt) {
+                        for try await chunk in session.stream(prompt: prompt) {
                             final = chunk
                             actionContinuation.yield(.workflowOutput(.summaryResult(.success((emails, chunk)))))
                         }
